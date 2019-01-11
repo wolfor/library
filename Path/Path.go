@@ -86,3 +86,55 @@ func PathExists(path string) (bool, error) {
 	}
 	return false, err
 }
+
+//文件或目录是否存在。true表存在，false表不存在
+func IsExists(path string) bool {
+	isExists, err := PathExists(path)
+
+	if err != nil {
+		return false
+	}
+
+	return isExists
+}
+
+//根据文件路径字符串获取文件路径
+//例如:filePath="/usr/local/test.txt"
+//返回结果:/usr/local
+func GetFileDir(filePath string) string {
+	if strings.TrimSpace(filePath) == "" {
+		return ""
+	}
+
+	dir := filePath[:strings.LastIndex(filePath, "/")]
+
+	return dir
+}
+
+//根据文件路径字符串获取文件名
+//例如:filePath="/usr/local/test.txt"
+//返回结果:test.txt
+func GetFileName(filePath string) string {
+	if strings.TrimSpace(filePath) == "" {
+		return ""
+	}
+
+	fileName := filePath[strings.LastIndex(filePath, "/")+1:]
+
+	return fileName
+}
+
+//根据文件路径字符串获取文件名
+//例如:filePath="/usr/local/test.txt"
+//返回结果:test
+func GetFileName2(filePath string) string {
+	if strings.TrimSpace(filePath) == "" {
+		return ""
+	}
+
+	fileName := GetFileName(filePath)
+
+	fileName = fileName[:strings.LastIndex(fileName, ".")]
+
+	return fileName
+}

@@ -2,8 +2,13 @@ package FileHelper
 
 import (
 	"io"
+	"io/ioutil"
+	"library/Format"
 	"os"
+	"strings"
+	"time"
 
+	"github.com/Sydsvenskan/json2csv"
 	"github.com/jszwec/csvutil"
 )
 
@@ -71,4 +76,34 @@ func (this *CSVHelper) UnmarshalFile(object interface{}) error {
 	buff := this.ReadFile()
 
 	return this.UnmarshalBytes(buff, object)
+}
+
+func Json2CSV(jsons string) string {
+	now := time.Now().Local()
+	fileName := now.Format(Format.TimeStampFormat2)
+
+	arr := strings.Split(fileName, ".")
+
+	filePath := strings.Join([]string{"./", "temp_", arr[0], arr[1], ".csv"}, "")
+	fi, err := os.Create(filePath)
+
+	if err != nil {
+		return ""
+	}
+	defer func(f *os.File, fPath string) {
+		f.Close()
+		RemoveFile(fPath)
+	}(fi, filePath)
+
+	json2csv.Convert(strings.NewReader(jsons), fi)
+
+	buf, err := ioutil.ReadFile(filePath)
+
+	if err != nil {
+		return ""
+	}
+
+	result := string(buf)
+
+	return result
 }

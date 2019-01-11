@@ -54,6 +54,8 @@ func (this *UdpServer) Listen() {
 	}
 }
 
+//
+//address value format: 127.0.0.1:224.0.1.0
 func MulticastListen(address string, h func(*net.UDPAddr, int, []byte)) {
 	addr, err := net.ResolveUDPAddr("udp", address)
 	if err != nil {

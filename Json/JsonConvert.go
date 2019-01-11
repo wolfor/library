@@ -44,7 +44,8 @@ func (this *JsonConvert) JsonToStruct2(buffer []byte, targetStruct interface{}) 
 	return err
 }
 
-//
+//json format string convert to struct
+//call example:
 func (this *JsonConvert) JsonToStruct3(jsonString string, targetStruct interface{}) error {
 	if jsonString == "" {
 		return errors.New("the jsonString input parameter is empty or null.")
