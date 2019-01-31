@@ -164,7 +164,10 @@ func (this *KafkaHelper) AsyncProducer(topics, pushData string) {
 	producer.Input() <- msg
 }
 
+<<<<<<< HEAD
 /*
+=======
+>>>>>>> 305541849dce4fc3a17980b5e29e48ca5323a688
 func (this *KafkaHelper) client() {
 	config := cluster.NewConfig()
 	config.Group.Return.Notifications = true
@@ -186,4 +189,7 @@ func (this *KafkaHelper) client() {
 
 	client.WritablePartitions()
 }
+<<<<<<< HEAD
 */
+=======
+>>>>>>> 305541849dce4fc3a17980b5e29e48ca5323a688

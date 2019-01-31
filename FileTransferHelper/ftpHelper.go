@@ -2,7 +2,10 @@ package FileTransferHelper
 
 import (
 	"errors"
+<<<<<<< HEAD
 	"log"
+=======
+>>>>>>> 305541849dce4fc3a17980b5e29e48ca5323a688
 	//	"time"
 	//	"log"
 	"strings"
