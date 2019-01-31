@@ -19,24 +19,23 @@ type StartService func() error
 type StopService func() error
 
 type GoService struct {
-	intiFunc  InitService
+	initFunc  InitService
 	startFunc StartService
 	stopFunc  StopService
 }
 
-func NewGoService(initF InitService, startF StartService, stopF StopService) *GoService {
+func NewGoService(initFunc InitService, startFunc StartService, stopFunc StopService) *GoService {
 	service := new(GoService)
-	service.intiFunc = initF
-	service.startFunc = startF
-	service.stopFunc = stopF
+	service.initFunc = initFunc
+	service.startFunc = startFunc
+	service.stopFunc = stopFunc
 
 	return service
 }
 
 func (this *GoService) Run() {
-
-	if this.intiFunc != nil {
-		this.intiFunc()
+	if this.initFunc != nil {
+		this.initFunc()
 	}
 
 	//创建监听退出chan

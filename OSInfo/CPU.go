@@ -19,7 +19,9 @@ func init() {
 		cpuInfos = nil
 	}
 
-	cpuInfo = cpuInfos[0]
+	if len(cpuInfos) > 0 {
+		cpuInfo = cpuInfos[0]
+	}
 }
 
 //cpu频率，单位：MHz
