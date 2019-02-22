@@ -5,10 +5,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"library/Path"
-<<<<<<< HEAD
 	"log"
-=======
->>>>>>> 305541849dce4fc3a17980b5e29e48ca5323a688
 	"os"
 )
 
@@ -34,10 +31,8 @@ func WriteFile(filePath, fileContent string) bool {
 	}
 
 	if err != nil {
-<<<<<<< HEAD
 		log.Println("open or create file failure ,error =", err)
-=======
->>>>>>> 305541849dce4fc3a17980b5e29e48ca5323a688
+
 		return false
 	}
 	defer fi.Close()
@@ -95,11 +90,7 @@ func RemovePath(localPath string) bool {
 
 //删除指定文件夹下所有文件
 func RemoveAllFile(localDir string) {
-<<<<<<< HEAD
 	filePathArr := GetAllFile(localDir)
-=======
-	filePathArr := getAllFile(localDir)
->>>>>>> 305541849dce4fc3a17980b5e29e48ca5323a688
 
 	for _, filePath := range filePathArr {
 		RemoveFile(filePath)
@@ -107,11 +98,7 @@ func RemoveAllFile(localDir string) {
 }
 
 //第归获取目录下含子目录所有文件
-<<<<<<< HEAD
 func GetAllFile(currPath string) (filePathArrary []string) {
-=======
-func getAllFile(currPath string) (filePathArrary []string) {
->>>>>>> 305541849dce4fc3a17980b5e29e48ca5323a688
 	rd, err := ioutil.ReadDir(currPath)
 
 	if err != nil {
@@ -120,11 +107,7 @@ func getAllFile(currPath string) (filePathArrary []string) {
 
 	for _, fi := range rd {
 		if fi.IsDir() {
-<<<<<<< HEAD
 			filePathArrary = append(filePathArrary, GetAllFile(currPath+"/"+fi.Name())...)
-=======
-			filePathArrary = append(filePathArrary, getAllFile(currPath+"/"+fi.Name())...)
->>>>>>> 305541849dce4fc3a17980b5e29e48ca5323a688
 		} else {
 			filePathArrary = append(filePathArrary, currPath+"/"+fi.Name())
 		}

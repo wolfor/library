@@ -66,7 +66,6 @@ func HttpRequestDo(request *http.Request) ([]byte, error) {
 
 	return b, err
 }
-<<<<<<< HEAD
 
 func Get(url string) string {
 
@@ -103,5 +102,3 @@ func Get(url string) string {
 		return ""
 	}
 }
-=======
->>>>>>> 305541849dce4fc3a17980b5e29e48ca5323a688

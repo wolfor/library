@@ -131,3 +131,8 @@ func (this *RedisHelper) RPop(queue string) {
 func (this *RedisHelper) LTrim(queue string, start, stop int64) {
 	this.client.LTrim(queue, start, stop)
 }
+
+//删除当前redis库中指定的key
+func (this *RedisHelper) Del(keys ...string) int64 {
+	return this.client.Del(keys...).Val()
+}

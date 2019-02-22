@@ -99,6 +99,39 @@ func GetFiveMinuteTime(currTime string) (string, string) {
 	return beginTime, endTime
 }
 
+//获取10分钟时间区间
+//返回结果：开始时间和截止时间
+//时间格式:yyyy-MM-dd HH:mm:ss
+func GetTenMinuteTime(currTime string) (string, string) {
+	var beginTime, endTime string
+
+	d, _ := time.ParseDuration("10m")
+
+	min := getMinute(currTime)
+
+	dataTimefrontMin := currTime[:14]
+	dataTimebehindMin := currTime[16:]
+
+	//2018-10-11 方法待优化
+	//改进方法如下：
+	//开始时间=计算分钟值拼接日期时间字符串，其分钟值=(分钟值- 分钟值除以10取余数)
+	//截止时间=开始时间+10分钟
+
+	remainder := min % 10
+
+	minute := strconv.Itoa(min - remainder)
+
+	if len(minute) == 1 {
+		minute = strings.Join([]string{"0", minute}, "")
+	}
+
+	beginTime = strings.Join([]string{dataTimefrontMin, minute, dataTimebehindMin}, "")
+
+	endTime = addTimeResult(beginTime, d)
+
+	return beginTime, endTime
+}
+
 //获取15分钟时间区间
 //返回结果：开始时间和截止时间
 //时间格式:yyyy-MM-dd HH:mm:ss
